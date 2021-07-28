@@ -9,6 +9,11 @@ variable "vmware_folder" {
   type = string
 }
 
+variable "vsphere_network" {
+  type = string
+  default = "VM Network"
+}
+
 variable "bootstrap_complete" {
   type    = string
   default = "false"
@@ -39,12 +44,12 @@ data "vsphere_compute_cluster" "cluster" {
 }
 
 data "vsphere_network" "network" {
-  name          = "VM Network"
+  name          = var.vsphere_network
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
 data "vsphere_datastore" "nvme" {
-  name          = "nvme2tb970"
+  name          = yamldecode(file("~/.config/ocp/vsphere.yaml"))["vsphere-datastore"]
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
