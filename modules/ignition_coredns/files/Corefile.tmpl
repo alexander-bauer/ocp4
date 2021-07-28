@@ -1,0 +1,10 @@
+.:53 {
+    forward . ${public_dns}
+    errors
+}
+
+${cluster_domain}:53 {
+    file /root/${cluster_domain}.db
+    log
+    errors
+}
