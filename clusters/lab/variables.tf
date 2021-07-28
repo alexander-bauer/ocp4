@@ -69,6 +69,11 @@ variable "ignition" {
 #########
 ## Machine variables
 
+variable "ssh_pubkey" {
+  type    = string
+  default = "~/.ssh/id_ed25519.pub"
+}
+
 variable "bootstrap_ignition_path" {
   type    = string
   default = ""
