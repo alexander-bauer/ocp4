@@ -7,6 +7,7 @@ lab:
 
 nukelab:
 	cd clusters/lab; terraform destroy	
+	rm -rf openshift/
 
 remove-bootstrap-lab:
 	cd clusters/lab; terraform apply -auto-approve -var 'bootstrap_complete=true'
