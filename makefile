@@ -43,7 +43,7 @@ get-csr:
 approve-csr:
 	oc --kubeconfig openshift/auth/kubeconfig get csr -ojson | \
 		jq -r '.items[] | select(.status == {} ) | .metadata.name' | \
-		xargs oc --kubeconfig openshift/auth/kubeconfig adm certificate approve
+		xargs -r oc --kubeconfig openshift/auth/kubeconfig adm certificate approve
 
 import-ova:
 	govc import.ova --folder=templates --ds=mx1tb --name=rhcos-4.6.1 https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.6/4.6.1/rhcos-vmware.x86_64.ova
