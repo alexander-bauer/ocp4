@@ -9,9 +9,9 @@ module "master" {
   name      = "${var.cluster_slug}-master${count.index + 1}"
   folder    = "${var.vmware_folder}/${var.cluster_slug}"
   datastore = data.vsphere_datastore.nvme.id
-  disk_size = 40
-  memory    = 8192
-  num_cpu   = 8
+  disk_size = var.master_disk_size
+  memory    = var.master_memory
+  num_cpu   = var.master_num_cpu
   ignition  = file(var.master_ignition_path)
 
   resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
@@ -36,9 +36,9 @@ module "worker" {
   name      = "${var.cluster_slug}-worker${count.index + 1}"
   folder    = "${var.vmware_folder}/${var.cluster_slug}"
   datastore = data.vsphere_datastore.nvme.id
-  disk_size = 40
-  memory    = 8192
-  num_cpu   = 4
+  disk_size = var.worker_disk_size
+  memory    = var.worker_memory
+  num_cpu   = var.worker_num_cpu
   ignition  = file(var.worker_ignition_path)
 
   resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id

@@ -94,9 +94,39 @@ variable "master_ips" {
   default = []
 }
 
+variable "master_disk_size" {
+  type    = number
+  default = 40
+}
+
+variable "master_memory" {
+  type    = number
+  default = 8192
+}
+
+variable "master_num_cpu" {
+  type    = number
+  default = 8
+}
+
 variable "worker_ips" {
   type    = list(string)
   default = []
+}
+
+variable "worker_disk_size" {
+  type    = number
+  default = 40
+}
+
+variable "worker_memory" {
+  type    = number
+  default = 8192
+}
+
+variable "worker_num_cpu" {
+  type    = number
+  default = 8
 }
 
 variable "bootstrap_ip" {
