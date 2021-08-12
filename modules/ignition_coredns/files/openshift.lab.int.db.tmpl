@@ -1,13 +1,13 @@
 $ORIGIN .
 $TTL 120;
-${cluster_domain}         IN SOA  ns1.${cluster_domain}. hostmaster.${cluster_domain}. (
+${cluster_slug}.${cluster_domain} IN SOA  ns1.${cluster_slug}.${cluster_domain}. hostmaster.${cluster_slug}.${cluster_domain}. (
                                 2011112904 ; serial
                                 60         ; refresh (1 minute)
                                 15         ; retry (15 seconds)
                                 1800       ; expire (30 minutes)
                                 10         ; minimum (10 seconds)
                                 )
-                        NS      ns1.${cluster_domain}.
+                        NS      ns1.${cluster_slug}.${cluster_domain}.
 $ORIGIN ${cluster_slug}.${cluster_domain}.
 ns1                     A       ${coredns_ip}
 

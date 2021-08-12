@@ -13,6 +13,7 @@ data "ignition_file" "corefile" {
   mode = "420" // 0644
   content {
     content = templatefile("${path.module}/files/Corefile.tmpl", {
+      cluster_slug   = var.cluster_slug,
       cluster_domain = var.cluster_domain,
       public_dns     = var.public_dns
     })
@@ -20,7 +21,7 @@ data "ignition_file" "corefile" {
 }
 
 data "ignition_file" "openshift_lab_db" {
-  path = "/opt/coredns/${var.cluster_domain}.db"
+  path = "/opt/coredns/${var.cluster_slug}.${var.cluster_domain}.db"
   mode = "420" // 0644
   content {
     content = templatefile("${path.module}/files/openshift.lab.int.db.tmpl", {

@@ -3,8 +3,8 @@
     errors
 }
 
-${cluster_domain}:53 {
-    file /root/${cluster_domain}.db
+${cluster_slug}.${cluster_domain}:53 {
+    file /root/${cluster_slug}.${cluster_domain}.db
     log
     errors
 }
